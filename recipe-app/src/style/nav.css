@@ -1,0 +1,21 @@
+h1 {
+    color: red;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+    /* flex-direction: row; */
+    justify-content: space-evenly;
+}
+
+li:hover {
+    border-bottom: 3px solid #df4943;
+    /* color: #df4943; */
+}
+
+.fontAwesomeIcon:hover {
+    color: black;
+}

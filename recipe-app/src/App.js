@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Home from './component/Home'
+import Nav from "./component/nav/Nav"
+import Drinks from './component/nav/Drinks/Drinks';
+import Cocktail from './component/nav/Drinks/components/Cocktail'
+import DrinksOverview from './component/nav/Drinks/DrinksOverview';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <div className='app-NavBar'>
+    <Nav />
+      </div>
+    <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path='/drinks' element={<Drinks/>}>
+      <Route path="" element={<DrinksOverview />} />
+      <Route path="cocktail" element={<Cocktail />} />
+    </Route>
+    <Route path="*" element={<Navigate replace to="/"/>} />
+    </Routes>
+    </>
   );
 }
 

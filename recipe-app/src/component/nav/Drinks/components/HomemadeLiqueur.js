@@ -5,76 +5,75 @@ import '../../../../style/drinks.css'
 
 const url = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
-function Cocktail(props) {
+function HomemadeLiqueur(props) {
 
-    const [alc, setAlc] = useState()
-    const [single, setSingle] = useState(false)
-    const [singleDrink, setSingleDrink] = useState()
-    const [idDrink, setIdDrink] = useState()
-    
+  const [alc, setAlc] = useState()
+  const [single, setSingle] = useState(false)
+  const [singleDrink, setSingleDrink] = useState()
+  const [idDrink, setIdDrink] = useState()
 
-      const getDrinkByName = async (name) => {
+    const getDrinkByName = async (name) => {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`);
         const data = await response.json();
         return data.drinks;
       }
-
-    const getOneDrinkByName = async (idDrink) => {
+      const getOneDrinkByName = async (idDrink) => {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
         const data = await response.json();
         return data.drinks;
       }
       useEffect(() => {
         if (!single){
-            getDrinkByName('Cocktail')
+        getDrinkByName('Homemade Liqueur')
         .then(data => setAlc(data));
-        } 
-        else {
-            getOneDrinkByName(idDrink)
-        .then(data => setSingleDrink(data));
-        }
-      }, [])
-    const handleclick = async (key) => {
-       if (key) {
-        console.log(key)
-        const oneDrink = await getOneDrinkByName(alc[key].idDrink)
-        console.log(oneDrink);
-        await setSingleDrink(oneDrink)
-        console.log(alc[key].idDrink)
+      } 
+      else {
+          getOneDrinkByName(idDrink)
+      .then(data => setSingleDrink(data));
       }
-        await setSingle(!single)
-    }
-    return (
-      <>       
-       {(!single)?( 
-          <section className="theCocktailSection">
-            {alc?.map((alchol, key) => {
-            return (
-                <div className="productContainerC" onClick={() => {
-                    handleclick(key)
-                }}>
-                    <img src={alchol.strDrinkThumb}  alt="cocktails" />
-                    <h3 className="nameC" >
-                        {alchol.strDrink}
-                    </h3>
-                </div>
-            )
-          })}
-          </section>
-          
-      ): ( 
-        <div className="productContainerC" onClick={() => {
-          handleclick()
-      }}>
-            <section className="theCocktailSection"> 
-             <img src={singleDrink[0].strDrinkThumb}  alt="cocktails" />
-          <h3 className="nameC" >
-              {singleDrink[0].strDrink}
-          
-        </h3>
-    </section>
+      },[])
+    
+      const handleclick = async (key) => {
+        if (key) {
+         console.log(key)
+         const oneDrink = await getOneDrinkByName(alc[key].idDrink)
+         console.log(oneDrink);
+         await setSingleDrink(oneDrink)
+         console.log(alc[key].idDrink)
+       }
+         await setSingle(!single)
+     }
+     return (
+       <>       
+        {(!single)?( 
+           <section className="theCocktailSection">
+             {alc?.map((alchol, key) => {
+             return (
+                 <div className="productContainerC" onClick={() => {
+                     handleclick(key)
+                 }}>
+                     <img src={alchol.strDrinkThumb}  alt="Homemade_liqueur" />
+                     <h3 className="nameC" >
+                         {alchol.strDrink}
+                     </h3>
+                 </div>
+             )
+           })}
+           </section>
+           
+       ): ( 
+         <div className="productContainerC" onClick={() => {
+           handleclick()
+       }}>
+             <section className="theCocktailSection"> 
+              <img src={singleDrink[0].strDrinkThumb}  alt="Homemade_liqueur" />
+           <h3 className="nameC" >
+               {singleDrink[0].strDrink}
+           
+         </h3>
+     </section>
 
-    <div>{singleDrink[0].strGlass}</div>
+     <div>{singleDrink[0].strGlass}</div>
       <div class="ing"> Ingridients: 
       <ul>
         <li>{singleDrink[0].strMeasure1} {singleDrink[0].strIngredient1}</li>
@@ -97,10 +96,10 @@ function Cocktail(props) {
   <div class="ing"> Instructions:
   <div>{singleDrink[0].strInstructions}</div>
   </div>
-    </div>
-    )}
-      </>
-    );
-  }
+     </div>
+     )}
+       </>
+     );
+   }
   
-  export default Cocktail;
+  export default HomemadeLiqueur;

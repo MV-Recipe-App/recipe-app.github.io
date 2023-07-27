@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from "react-router-dom";
-import DrinksNav from "./DrinksNav";
-import Cocktail from "./components/Cocktail"
-import Beer from "./components/Beer";
+import QuickNav from "./QuickNav";
 
-function Drinks() {
+function Quick() {
     return (
       <>
       <div className="drinks-nav">
-        <DrinksNav />
+        <QuickNav />
       </div>
       <div className="drinks-main">
       </div>
@@ -17,4 +15,4 @@ function Drinks() {
     );
   }
   
-  export default Drinks;
+  export default Quick;

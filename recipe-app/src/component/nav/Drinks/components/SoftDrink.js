@@ -5,47 +5,45 @@ import '../../../../style/drinks.css'
 
 const url = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
-function Cocktail(props) {
+function SoftDrink(props) {
 
-    const [alc, setAlc] = useState()
-    const [single, setSingle] = useState(false)
-    const [singleDrink, setSingleDrink] = useState()
-    const [idDrink, setIdDrink] = useState()
-    
+  const [alc, setAlc] = useState()
+  const [single, setSingle] = useState(false)
+  const [singleDrink, setSingleDrink] = useState()
+  const [idDrink, setIdDrink] = useState()
 
-      const getDrinkByName = async (name) => {
+    const getDrinkByName = async (name) => {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`);
         const data = await response.json();
         return data.drinks;
       }
-
-    const getOneDrinkByName = async (idDrink) => {
-        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
-        const data = await response.json();
-        return data.drinks;
-      }
-      useEffect(() => {
-        if (!single){
-            getDrinkByName('Cocktail')
-        .then(data => setAlc(data));
-        } 
-        else {
-            getOneDrinkByName(idDrink)
-        .then(data => setSingleDrink(data));
+      const getOneDrinkByName = async (idDrink) => {
+          const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`);
+          const data = await response.json();
+          return data.drinks;
         }
-      }, [])
-    const handleclick = async (key) => {
-       if (key) {
-        console.log(key)
-        const oneDrink = await getOneDrinkByName(alc[key].idDrink)
-        console.log(oneDrink);
-        await setSingleDrink(oneDrink)
-        console.log(alc[key].idDrink)
+        useEffect(() => {
+          if (!single){
+        getDrinkByName('Soft_Drink')
+        .then(data => setAlc(data));
+      } 
+      else {
+          getOneDrinkByName(idDrink)
+      .then(data => setSingleDrink(data));
       }
-        await setSingle(!single)
+    }, [])
+  const handleclick = async (key) => {
+     if (key) {
+      console.log(key)
+      const oneDrink = await getOneDrinkByName(alc[key].idDrink)
+      console.log(oneDrink);
+      await setSingleDrink(oneDrink)
+      console.log(alc[key].idDrink)
     }
+      await setSingle(!single)
+  }
     return (
-      <>       
+      <>
        {(!single)?( 
           <section className="theCocktailSection">
             {alc?.map((alchol, key) => {
@@ -53,7 +51,7 @@ function Cocktail(props) {
                 <div className="productContainerC" onClick={() => {
                     handleclick(key)
                 }}>
-                    <img src={alchol.strDrinkThumb}  alt="cocktails" />
+                    <img src={alchol.strDrinkThumb}  alt="Soft_Drink" />
                     <h3 className="nameC" >
                         {alchol.strDrink}
                     </h3>
@@ -67,7 +65,7 @@ function Cocktail(props) {
           handleclick()
       }}>
             <section className="theCocktailSection"> 
-             <img src={singleDrink[0].strDrinkThumb}  alt="cocktails" />
+             <img src={singleDrink[0].strDrinkThumb}  alt="Soft_Drink" />
           <h3 className="nameC" >
               {singleDrink[0].strDrink}
           
@@ -103,4 +101,4 @@ function Cocktail(props) {
     );
   }
   
-  export default Cocktail;
+  export default SoftDrink;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-function DrinksOverview() {
+function QuickOverview() {
   return (
     <>
-    <h1>Drinks Page</h1>
+    <h1>Quick Page</h1>
     </>
   );
 }
 
-export default DrinksOverview;
+export default QuickOverview;

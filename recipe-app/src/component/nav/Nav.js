@@ -9,7 +9,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 function Nav() {
     return (
       <>
-      <nav>
+      <nav className="main-nav">
         <ul>
             <Link style={{ textDecoration: 'none'}} to="/recipe">
               <li>Recipes <FontAwesomeIcon icon={faChevronDown} size="xs" className="fontAwesomeIcon"/></li>
@@ -26,9 +26,11 @@ function Nav() {
             <Link style={{ textDecoration: 'none'}} to="/baking">
               <li>Baking<FontAwesomeIcon icon={faChevronDown} size="xs" className="fontAwesomeIcon"/></li>
             </Link>
+            <Link style={{ textDecoration: 'none'}} to="/about">
               <li>About Us</li>
-            <FontAwesomeIcon icon={faHeart} />
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Link>
+            <FontAwesomeIcon icon={faHeart} className="heart"/>
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="search"/>
         </ul>
       </nav>
       </>

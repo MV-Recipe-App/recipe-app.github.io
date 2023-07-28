@@ -46,6 +46,7 @@ import Pork from './component/nav/Recipes/components/Pork';
 import Seafood from './component/nav/Recipes/components/Seafood';
 import RecipesOverview from './component/nav/Recipes/RecipesOverview';
 import Recipes from './component/nav/Recipes/Recipes';
+import About from './component/About';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
       </div>
     <Routes>
     <Route path="/" element={<Home/>}/>
+    <Route path='/about' element={<About/>}/>
     <Route path='/drinks' element={<Drinks/>}>
       <Route path="/drinks" element={<DrinksOverview />} />
       <Route path="beer" element={<Beer/>}/>
